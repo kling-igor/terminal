@@ -1,6 +1,7 @@
 import { join } from "path";
 import HTMLWebpackPlugin from "html-webpack-plugin";
 import packagejson from "./package.json";
+import nodeExternals from "webpack-node-externals";
 
 module.exports = env => ({
   entry: join(__dirname, "src", "renderer", "index.js"),
@@ -12,12 +13,22 @@ module.exports = env => ({
   watch: false,
 
   node: {
-    fs: "empty"
+    console: true,
+    net: "empty",
+    tls: "empty",
+    dns: "empty",
+    child_process: "empty"
   },
 
   watchOptions: {
     aggregateTimeout: 100
   },
+
+  // externals: {
+  //   "node-pty": "pty"
+  // },
+
+  externals: [nodeExternals()],
 
   devtool: env.dev ? "inline-source-map" : false,
 

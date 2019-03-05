@@ -1,7 +1,7 @@
 {
-  "name": "electron-boilerplate",
+  "name": "terminal",
   "version": "1.0.0",
-  "description": "Electron@5, React@16, MobX@5, Babel@7 boilerplate",
+  "description": "xTerm + Electron",
   "main": "app/main.js",
   "scripts": {
     "start": "electron .",
@@ -16,12 +16,16 @@
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "electron": "^5.0.0-beta.2",
+    "lodash.debounce": "^4.0.8",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
+    "node-pty": "^0.8.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "styled-components": "^4.1.3",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "xterm": "^3.11.0",
+    "xterm-addon-ligatures": "0.1.0-beta-1"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -40,6 +44,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "webpack-node-externals": "^1.7.2"
   }
 }

@@ -27,7 +27,7 @@ app.on("ready", () => {
     () => {
       onBlur(hash);
     },
-    false // DEV_TOOLS
+    true // DEV_TOOLS
   );
 });
 
