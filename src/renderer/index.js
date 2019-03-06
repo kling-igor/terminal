@@ -50,17 +50,23 @@ Terminal.applyAddon(fit);
 Terminal.applyAddon(ligatures);
 Terminal.applyAddon(fullscreen);
 
+// https://xtermjs.org/docs/api/terminal/interfaces/iterminaloptions/
 const term = new Terminal({
   fontFamily: "Fira Code, Iosevka, monospace",
-  fontFamily: "monospace",
   fontSize: 12,
-  experimentalCharAtlas: "dynamic"
+  fontWeight: "normal", // "bold"
+  fontWeightBold: "bolder", // : 'bold',
+  cursorStyle: "block", // "block" | "underline" | "bar"
+  experimentalCharAtlas: "dynamic",
+  cursorBlink: true
+  // drawBoldTextInBrightColors: true
 });
 
 term.open(document.getElementById("app"));
 term.enableLigatures();
 term.fit();
 term.toggleFullScreen(true);
+term.focus();
 
 const ptyProc = pty.spawn(
   os.platform() === "win32"
