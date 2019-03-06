@@ -41,12 +41,14 @@ import * as pty from "node-pty";
 import { Terminal } from "xterm";
 import * as fit from "xterm/lib/addons/fit/fit";
 import * as ligatures from "xterm-addon-ligatures";
+import * as fullscreen from "xterm/lib/addons/fullscreen/fullscreen";
 import _debounce from "lodash.debounce";
 
 import "./xterm.css";
 
 Terminal.applyAddon(fit);
 Terminal.applyAddon(ligatures);
+Terminal.applyAddon(fullscreen);
 
 const term = new Terminal({
   fontFamily: "Fira Code, Iosevka, monospace",
@@ -58,6 +60,7 @@ const term = new Terminal({
 term.open(document.getElementById("app"));
 term.enableLigatures();
 term.fit();
+term.toggleFullScreen(true);
 
 const ptyProc = pty.spawn(
   os.platform() === "win32"
