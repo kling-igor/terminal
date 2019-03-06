@@ -43,12 +43,18 @@ class WindowManager {
       icon:
         process.platform === "linux" &&
         join(__dirname, "assets", "icons", "png", "64x64.png"),
-      ...options
+      ...options,
+      webPreferences: {
+        nodeIntegration: true,
+        devTools: true,
+        webSecurity: false
+        // allowRunningInsecureContent: true
+      }
     });
 
-    if (devTools) {
-      window.webContents.openDevTools();
-    }
+    // if (devTools) {
+    //   window.webContents.openDevTools();
+    // }
 
     this.windows[hash] = window;
 

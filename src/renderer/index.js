@@ -40,14 +40,16 @@ import * as os from "os";
 import * as pty from "node-pty";
 import { Terminal } from "xterm";
 import * as fit from "xterm/lib/addons/fit/fit";
-// import * as ligatures from "xterm-addon-ligatures";
+import * as ligatures from "xterm-addon-ligatures";
 import _debounce from "lodash.debounce";
 
+import "./xterm.css";
+
 Terminal.applyAddon(fit);
-// Terminal.applyAddon(ligatures);
+Terminal.applyAddon(ligatures);
 
 const term = new Terminal({
-  // fontFamily: "Fira Code, Iosevka, monospace",
+  fontFamily: "Fira Code, Iosevka, monospace",
   fontFamily: "monospace",
   fontSize: 12,
   experimentalCharAtlas: "dynamic"

@@ -4,6 +4,7 @@ import packagejson from "./package.json";
 import nodeExternals from "webpack-node-externals";
 
 module.exports = env => ({
+  target: "node",
   entry: join(__dirname, "src", "renderer", "index.js"),
   output: {
     filename: "index.js",
@@ -13,31 +14,19 @@ module.exports = env => ({
   watch: false,
 
   node: {
-    console: true,
-    net: "empty",
-    tls: "empty",
-    dns: "empty",
-    child_process: "empty"
+    __dirname: false
   },
 
   watchOptions: {
     aggregateTimeout: 100
   },
 
-  // externals: {
-  //   "node-pty": "pty"
-  // },
-
   externals: [nodeExternals()],
 
-  devtool: env.dev ? "inline-source-map" : false,
+  devtool: env.dev ? "source-map" : false,
 
   resolve: {
-    modules: [
-      join(__dirname, "."),
-      join(__dirname, "src"),
-      join(__dirname, "src", "renderer")
-    ]
+    extensions: ["*", ".js", ".jsx", ".css"]
   },
 
   plugins: [
@@ -61,11 +50,8 @@ module.exports = env => ({
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }]
       }
     ]
-  },
-  resolve: {
-    extensions: ["*", ".js", ".jsx", ".css"]
   }
 });
